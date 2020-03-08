@@ -66,7 +66,22 @@ extension ViewController {
     }
     
     @IBAction func didTapResetButton(sender: UIButton) {
-        switch sender.tag {
+        
+        let alert = UIAlertController(title: "Are you sure?", message: "Are you sure you want to reset the counter?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+            self.resetCounter(tag: sender.tag)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(alert, animated: true)
+        
+    }
+     
+    func resetCounter(tag: Int) {
+
+        switch tag {
         case 1000:
             rowCount = 0
         case 2000:
